@@ -1,8 +1,8 @@
-A [Giter8][g8] template for a Hello World application, used in the [Getting Started with Scala guide](https://docs.scala-lang.org/getting-started-sbt-track/getting-started-with-scala-and-sbt-on-the-command-line.html).
+A [Giter8][g8] template for a starter application that uses [Eldarica](https://github.com/uuverifiers/eldarica).
 
 Template license
 ----------------
-Written in 2017-2021 by the Scala Center
+Written in 2022 by uuverifiers.
 
 To the extent possible under law, the author(s) have dedicated all copyright and related
 and neighboring rights to this template to the public domain worldwide.

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+if [ $(uname) = "Linux" ]; then
+    pathCmd="readlink -f"
+elif [ $(uname) = "Darwin" ]; then
+    pathCmd="stat -f %N"
+else
+    pathCmd="realpath"
+fi
+
+BASEDIR=`dirname $($pathCmd $0)`
+
+. $BASEDIR/setEnv
+
+# edit below line accordingly if main class is put inside a package
+# e.g., x.Main for package x
+exec $APP_CMD Main "$@"
