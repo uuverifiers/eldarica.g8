@@ -1,3 +1,5 @@
+package $package$
+
 import ap.parser._
 import ap.SimpleAPI
 import lazabs.horn.bottomup.{HornClauses, SimpleWrapper}

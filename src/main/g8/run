@@ -12,6 +12,4 @@ BASEDIR=`dirname $($pathCmd $0)`
 
 . $BASEDIR/setEnv
 
-# edit below line accordingly if main class is put inside a package
-# e.g., x.Main for package x
-exec $APP_CMD Main "$@"
+exec $APP_CMD $package$.Main "\$@"

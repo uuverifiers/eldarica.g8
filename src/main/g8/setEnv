@@ -1,34 +1,34 @@
 # Figures out where Eldarica is installed and runs it with the proper classpath
 # (partially copied from the scala dist.)
-SOURCE=$0;
-SCRIPT=`basename "${SOURCE}"`;
+SOURCE=\$0;
+SCRIPT=`basename "\${SOURCE}"`;
 
 # Finds the root folder of the distribution, through the tempest (and the
 # symbolic links)
-while [ -h "${SOURCE}" ]; do
-    SCRIPT=`basename "${SOURCE}"`;
-    LOOKUP=`ls -ld "${SOURCE}"`;
-    TARGET=`expr "${LOOKUP}" : '.*-> \(.*\)$'`;
-    if expr "${TARGET:-.}/" : '/.*/$' > /dev/null; then
-        SOURCE=${TARGET:-.};
+while [ -h "\${SOURCE}" ]; do
+    SCRIPT=`basename "\${SOURCE}"`;
+    LOOKUP=`ls -ld "\${SOURCE}"`;
+    TARGET=`expr "\${LOOKUP}" : '.*-> \(.*\)$'`;
+    if expr "\${TARGET:-.}/" : '/.*/\$' > /dev/null; then
+        SOURCE=\${TARGET:-.};
     else
-        SOURCE=`dirname "${SOURCE}"`/${TARGET:-.};
+        SOURCE=`dirname "\${SOURCE}"`/\${TARGET:-.};
     fi;
 done;
 
-APP_HOME=`dirname "${SOURCE}"`;
+APP_HOME=`dirname "\${SOURCE}"`;
 
 export JAVA_OPTS="-Xmx2024m -Xss20000k";
 
-if [ -f ${APP_HOME}/dist/lazabs.jar ]; then
+if [ -f \${APP_HOME}/dist/$name$.jar ]; then
 
- 	# binary distribution, edit below line accordingly
-	export APP_CMD="java ${JAVA_OPTS} -cp ${APP_HOME}/dist/example_app.jar"
+ 	# binary distribution, edit below line accordingly if jar file is diferent
+	export APP_CMD="java \${JAVA_OPTS} -cp \${APP_HOME}/dist/$name$.jar"
 
-else if [ -f ${APP_HOME}/target/scala-2.*/*-assembly*.jar ]; then
+else if [ -f \${APP_HOME}/target/scala-2.*/$name$-assembly*.jar ]; then
 
   # binary distribution from sbt
-	export APP_CMD="java ${JAVA_OPTS} -cp ${APP_HOME}/target/scala-2.*/*-assembly*.jar"
+	export APP_CMD="java \${JAVA_OPTS} -cp \${APP_HOME}/target/scala-2.*/$name$-assembly*.jar"
 
 else
   echo "Could not find application jar, did you run sbt assembly? You might also need to update setEnv file to look for the correct jar file" >&2
