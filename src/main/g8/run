@@ -12,4 +12,5 @@ BASEDIR=`dirname \$(\$pathCmd \$0)`
 
 . \$BASEDIR/setEnv
 
-exec \$APP_CMD $package$.Main "\$@"
+exec \$APP_CMD \
+     $package$.Main "\$@"

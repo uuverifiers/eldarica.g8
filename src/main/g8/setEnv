@@ -8,7 +8,7 @@ SCRIPT=`basename "\${SOURCE}"`;
 while [ -h "\${SOURCE}" ]; do
     SCRIPT=`basename "\${SOURCE}"`;
     LOOKUP=`ls -ld "\${SOURCE}"`;
-    TARGET=`expr "\${LOOKUP}" : '.*-> \(.*\)$'`;
+    TARGET=`expr "\${LOOKUP}" : '.*-> \(.*\)\$'`;
     if expr "\${TARGET:-.}/" : '/.*/\$' > /dev/null; then
         SOURCE=\${TARGET:-.};
     else
