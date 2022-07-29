@@ -1,15 +1,15 @@
 #!/bin/sh
 
-if [ $(uname) = "Linux" ]; then
+if [ \$(uname) = "Linux" ]; then
     pathCmd="readlink -f"
-elif [ $(uname) = "Darwin" ]; then
+elif [ \$(uname) = "Darwin" ]; then
     pathCmd="stat -f %N"
 else
     pathCmd="realpath"
 fi
 
-BASEDIR=`dirname $($pathCmd $0)`
+BASEDIR=`dirname \$(\$pathCmd \$0)`
 
-. $BASEDIR/setEnv
+. \$BASEDIR/setEnv
 
-exec $APP_CMD $package$.Main "\$@"
+exec \$APP_CMD $package$.Main "\$@"
